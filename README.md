@@ -22,4 +22,13 @@ stat -s [TARGET_FILE or DIRECTORY] | cut -d " " -f3
 # st_mode=...
 ```
 
+### Export each line from command as envs.
+```shell
+export $([COMMAND] | xargs -L 1)
+
+## Ex. export all Heroku config vars
+## execute `heroku login` in advance.
+# export $(heroku config -s | xargs -L 1)
+```
+
 ### To be continued.
