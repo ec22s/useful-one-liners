@@ -31,4 +31,9 @@ export $([COMMAND] | xargs -L 1)
 # export $(heroku config -s | xargs -L 1)
 ```
 
+### Count lines in multiple files.
+```shell
+ls [TARGET_FILES] | xargs -L 1 wc -l
+```
+
 ### To be continued.
