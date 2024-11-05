@@ -16,7 +16,7 @@ xattr -w 'com.apple.fileprovider.ignore#P' 1 [TARGET_FILE or DIRECTORY]
 xattr -d 'com.apple.fileprovider.ignore#P' [TARGET_FILE or DIRECTORY]
 ```
 
-### Get file permissions in number format.
+### Get file permission in number format.
 ```shell
 stat -s [TARGET_FILE or DIRECTORY] | cut -d " " -f3
 # st_mode=...
