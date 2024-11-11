@@ -36,4 +36,14 @@ export $([COMMAND] | xargs -L 1)
 ls [TARGET_FILES] | xargs -L 1 wc -l
 ```
 
+### Check listening ports.
+- https://qiita.com/yokozawa/items/dbcb3b31f9308e4dcefc
+- https://zenn.dev/kazu_o/scraps/b287f569e3fac5
+```shell
+lsof -i -P | grep "LISTEN" # add 'sudo' if needed
+
+## close listening process
+# kill -9 [PID]
+```
+
 ### To be continued.
