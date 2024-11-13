@@ -36,6 +36,16 @@ export $([COMMAND] | xargs -L 1)
 ls [TARGET_FILES] | xargs -L 1 wc -l
 ```
 
+### Disable "not ejected safely" notification.
+- https://www.reddit.com/r/mac/comments/vsn1t6/how_to_disable_not_ejected_safely_notification_on/
+- https://x.com/Daihuku0015/status/1856352162298900757
+```shell
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool YES && sudo pkill diskarbitrationd
+
+# type in login password
+# restart Mac
+```
+
 ### Check listening ports.
 - https://qiita.com/yokozawa/items/dbcb3b31f9308e4dcefc
 - https://zenn.dev/kazu_o/scraps/b287f569e3fac5
