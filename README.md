@@ -56,4 +56,14 @@ lsof -i -P | grep "LISTEN" # add 'sudo' if needed
 # kill -9 [PID]
 ```
 
+<br>
+
+## Node.js
+
+### List all packages installed grobally with each version.
+- https://diwao.com/2019/09/npm-list-global.html
+```shell
+npm list -g --depth=0
+```
+
 ### To be continued.
