@@ -18,22 +18,22 @@ xattr -d 'com.apple.fileprovider.ignore#P' [TARGET_FILE or DIRECTORY]
 
 ### Get file permission in number format.
 ```shell
-stat -s [TARGET_FILE or DIRECTORY] | cut -d " " -f3
+stat -s {TARGET_FILE or DIRECTORY} | cut -d " " -f3
 # st_mode=...
 ```
 
 ### Export each line from command as envs.
 ```shell
-export $([COMMAND] | xargs -L 1)
+export $({COMMAND} | xargs -L 1)
 
 ## Ex. export all Heroku config vars
 ## execute `heroku login` in advance.
-# export $(heroku config -s | xargs -L 1)
+# export $(heroku config -s --app {APP_NAME} | xargs -L 1)
 ```
 
 ### Count lines in multiple files.
 ```shell
-ls [TARGET_FILES] | xargs -L 1 wc -l
+ls {TARGET_FILES} | xargs -L 1 wc -l
 ```
 
 ### Disable "not ejected safely" notification.
@@ -53,7 +53,7 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbit
 lsof -i -P | grep "LISTEN" # add 'sudo' if needed
 
 ## close listening process
-# kill -9 [PID]
+# kill -9 {PID}
 ```
 
 <br>
