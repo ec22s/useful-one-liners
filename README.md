@@ -73,6 +73,15 @@ lsof -i -P | grep "LISTEN" # add 'sudo' if needed
 
 <br>
 
+## JavaScript
+
+### Counting frequencies of array elements
+```javascript
+[1, 2, 2, 3, 3, 3, 4, 4, 4, 4].reduce((acc, v) => { acc[v] = (acc[v] || 0) + 1; return acc }, {})
+```
+
+<br>
+
 ## Node.js
 
 ### List all packages installed grobally with each version.
