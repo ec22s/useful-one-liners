@@ -7,6 +7,15 @@ $SHELL --version
 # GNU bash, version 5.2.26(1)-release (x86_64-apple-darwin22.6.0)
 ```
 
+<br>
+
+### Replace file names with sequential numbers.
+```sh
+# Ref. https://marbles.hatenablog.com/entry/2018/09/08/222745
+# Example: list files in order of date and rename to 2-digits with zero padding numbers.
+ls -tr * | awk '{ printf "mv \"%s\" %02d\n", $0, NR}' | sh
+```
+
 ### Exclude a file or directory from being synced to cloud storage. 
 ```shell
 # exclude
