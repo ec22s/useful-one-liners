@@ -16,6 +16,12 @@ $SHELL --version
 ls -tr * | awk '{ printf "mv \"%s\" %02d\n", $0, NR}' | sh
 ```
 
+### Crop multiple files using ImageMagick.
+```sh
+# Example: width=1920, height=1080, left=100 and top=50
+ls *.png | xargs -I% magick convert % -crop 1920x1080+100+50 output/%
+```
+
 ### Exclude a file or directory from being synced to cloud storage. 
 ```shell
 # exclude
