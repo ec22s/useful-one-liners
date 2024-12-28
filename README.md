@@ -9,6 +9,11 @@ $SHELL --version
 
 <br>
 
+### Remove all .DS_Store files in the current and sub directories
+```sh
+find . -name ".DS_Store" | xargs rm
+```
+
 ### Replace file names with sequential numbers.
 ```sh
 # Ref. https://marbles.hatenablog.com/entry/2018/09/08/222745
