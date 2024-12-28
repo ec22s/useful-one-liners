@@ -13,7 +13,8 @@ $SHELL --version
 ```sh
 # fast but unavailable for paths including a single quote (')
 find . -name ".DS_Store" | xargs rm
-
+```
+```sh
 # slow but available for paths above
 find . -name ".DS_Store" -exec rm {} \;
 
@@ -34,22 +35,27 @@ ls *.png | xargs -I% magick convert % -crop 1920x1080+100+50 output/%
 ```
 
 ### Exclude a file or directory from being synced to cloud storage. 
-```shell
+```sh
 # exclude
-xattr -w 'com.apple.fileprovider.ignore#P' 1 [TARGET_FILE or DIRECTORY]
-
+xattr -w 'com.apple.fileprovider.ignore#P' 1 {TARGET_FILE or DIRECTORY}
+```
+```sh
 # reinclude
-xattr -d 'com.apple.fileprovider.ignore#P' [TARGET_FILE or DIRECTORY]
+xattr -d 'com.apple.fileprovider.ignore#P' {TARGET_FILE or DIRECTORY}
+```
+```sh
+# Ex. exclude all node_module directories from sync
+find {TAGET_DIRECTORY} -type d | grep "/node_modules" | grep -v "/node_modules/" | xargs -I% xattr -w 'com.apple.fileprovider.ignore#P' 1 "%"
 ```
 
 ### Get file permission in number format.
-```shell
+```sh
 stat -s {TARGET_FILE or DIRECTORY} | cut -d " " -f3
 # st_mode=...
 ```
 
 ### Export each line from command as envs.
-```shell
+```sh
 export $({COMMAND} | xargs -L 1)
 
 ## Ex. export all Heroku config vars
@@ -58,14 +64,14 @@ export $({COMMAND} | xargs -L 1)
 ```
 
 ### Count lines in multiple files.
-```shell
+```sh
 ls {TARGET_FILES} | xargs -L 1 wc -l
 ```
 
 ### Disable "not ejected safely" notification.
 - https://www.reddit.com/r/mac/comments/vsn1t6/how_to_disable_not_ejected_safely_notification_on/
 - https://x.com/Daihuku0015/status/1856352162298900757
-```shell
+```sh
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbitration.diskarbitrationd.plist DADisableEjectNotification -bool YES && sudo pkill diskarbitrationd
 
 # type in login password
@@ -75,7 +81,7 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.DiskArbit
 ### Check listening ports.
 - https://qiita.com/yokozawa/items/dbcb3b31f9308e4dcefc
 - https://zenn.dev/kazu_o/scraps/b287f569e3fac5
-```shell
+```sh
 lsof -i -P | grep "LISTEN" # add 'sudo' if needed
 
 ## close listening process
@@ -88,6 +94,7 @@ lsof -i -P | grep "LISTEN" # add 'sudo' if needed
 
 ### Counting frequencies of array elements
 ```javascript
+// Ex.
 [1, 2, 2, 3, 3, 3].reduce((acc, v) => { acc[v] = (acc[v] || 0) + 1; return acc }, {})
 ```
 
@@ -97,7 +104,7 @@ lsof -i -P | grep "LISTEN" # add 'sudo' if needed
 
 ### List all packages installed grobally with each version.
 - https://diwao.com/2019/09/npm-list-global.html
-```shell
+```sh
 npm list -g --depth=0
 ```
 
