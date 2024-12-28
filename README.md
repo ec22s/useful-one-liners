@@ -24,13 +24,13 @@ find . -name ".DS_Store" -exec rm {} \;
 ### Replace file names with sequential numbers.
 ```sh
 # Ref. https://marbles.hatenablog.com/entry/2018/09/08/222745
-# Example: list files in order of date and rename to 2-digits with zero padding numbers.
+# Ex. list files in order of date and rename to 2-digits with zero padding numbers.
 ls -tr * | awk '{ printf "mv \"%s\" %02d\n", $0, NR}' | sh
 ```
 
 ### Crop multiple files using ImageMagick.
 ```sh
-# Example: width=1920, height=1080, left=100 and top=50
+# Ex. width=1920, height=1080, left=100 and top=50
 ls *.png | xargs -I% magick convert % -crop 1920x1080+100+50 output/%
 ```
 
@@ -57,10 +57,11 @@ stat -s {TARGET_FILE or DIRECTORY} | cut -d " " -f3
 ### Export each line from command as envs.
 ```sh
 export $({COMMAND} | xargs -L 1)
-
-## Ex. export all Heroku config vars
-## execute `heroku login` in advance.
-# export $(heroku config -s --app {APP_NAME} | xargs -L 1)
+```
+```sh
+# Ex. export all Heroku config vars
+# execute `heroku login` in advance.
+export $(heroku config -s --app {APP_NAME} | xargs -L 1)
 ```
 
 ### Count lines in multiple files.
