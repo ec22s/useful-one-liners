@@ -11,7 +11,13 @@ $SHELL --version
 
 ### Remove all .DS_Store files in the current and sub directories
 ```sh
+# fast but unavailable for paths including a single quote (')
 find . -name ".DS_Store" | xargs rm
+
+# slow but available for paths above
+find . -name ".DS_Store" -exec rm {} \;
+
+# Ref. https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12198239097
 ```
 
 ### Replace file names with sequential numbers.
