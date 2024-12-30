@@ -9,7 +9,28 @@ $SHELL --version
 
 <br>
 
-### Remove all .DS_Store files in the current and sub directories
+### For cloud storage: download all files in a virtual local directory (e.g. My dirve in Google Drive).
+```sh
+find {TAGET_DIRECTORY} -type f -exec wc {} \;
+```
+
+### For cloud storage: Exclude a file or directory from being synced to cloud. 
+```sh
+# exclude
+xattr -w 'com.apple.fileprovider.ignore#P' 1 {TARGET_FILE or DIRECTORY}
+```
+```sh
+# reinclude
+xattr -d 'com.apple.fileprovider.ignore#P' {TARGET_FILE or DIRECTORY}
+```
+```sh
+# Ex. exclude all node_module directories from sync
+find {TAGET_DIRECTORY} -type d | grep "/node_modules" | grep -v "/node_modules/" | xargs -I% xattr -w 'com.apple.fileprovider.ignore#P' 1 "%"
+```
+
+<br>
+
+### Remove all .DS_Store files in the current and sub directories.
 ```sh
 # fast but unavailable for paths including a single quote (')
 find . -name ".DS_Store" | xargs rm
@@ -32,20 +53,6 @@ ls -tr * | awk '{ printf "mv \"%s\" %02d\n", $0, NR}' | sh
 ```sh
 # Ex. width=1920, height=1080, left=100 and top=50
 ls *.png | xargs -I% magick convert % -crop 1920x1080+100+50 output/%
-```
-
-### Exclude a file or directory from being synced to cloud storage. 
-```sh
-# exclude
-xattr -w 'com.apple.fileprovider.ignore#P' 1 {TARGET_FILE or DIRECTORY}
-```
-```sh
-# reinclude
-xattr -d 'com.apple.fileprovider.ignore#P' {TARGET_FILE or DIRECTORY}
-```
-```sh
-# Ex. exclude all node_module directories from sync
-find {TAGET_DIRECTORY} -type d | grep "/node_modules" | grep -v "/node_modules/" | xargs -I% xattr -w 'com.apple.fileprovider.ignore#P' 1 "%"
 ```
 
 ### Get file permission in number format.
@@ -93,7 +100,7 @@ lsof -i -P | grep "LISTEN" # add 'sudo' if needed
 
 ## JavaScript
 
-### Counting frequencies of array elements
+### Count frequencies of array elements.
 ```javascript
 // Ex.
 [1, 2, 2, 3, 3, 3].reduce((acc, v) => { acc[v] = (acc[v] || 0) + 1; return acc }, {})
