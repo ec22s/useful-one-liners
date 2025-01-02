@@ -49,11 +49,20 @@ find . -name ".DS_Store" -exec rm {} \;
 ls -tr * | awk '{ printf "mv \"%s\" %02d\n", $0, NR}' | sh
 ```
 
-### Crop multiple files using ImageMagick.
+<br>
+
+### ImageMagick: resize an image by percent value.
+```sh
+magick {INPUT_FILE} -resize {PERCENT_VALUE}% {OUTPUT_FILE}
+```
+
+### ImageMagick: crop multiple files.
 ```sh
 # Ex. width=1920, height=1080, left=100 and top=50
-ls *.png | xargs -I% magick convert % -crop 1920x1080+100+50 output/%
+ls *.png | xargs -I% magick % -crop 1920x1080+100+50 output/%
 ```
+
+<br>
 
 ### Get file permission in number format.
 ```sh
