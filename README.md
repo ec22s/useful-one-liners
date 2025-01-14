@@ -77,7 +77,7 @@ export $({COMMAND} | xargs -L 1)
 ```sh
 # Ex. export all Heroku config vars
 # execute `heroku login` in advance.
-export $(heroku config -s --app {APP_NAME} | xargs -L 1)
+export $(heroku config -s --app={APP_NAME} | xargs -L 1)
 ```
 
 ### Count lines in multiple files.
