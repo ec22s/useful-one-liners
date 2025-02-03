@@ -51,19 +51,6 @@ ls -tr * | awk '{ printf "mv \"%s\" %02d\n", $0, NR}' | sh
 
 <br>
 
-### ImageMagick: resize an image by percent value.
-```sh
-magick {INPUT_FILE} -resize {PERCENT_VALUE}% {OUTPUT_FILE}
-```
-
-### ImageMagick: crop multiple files.
-```sh
-# Ex. width=1920, height=1080, left=100 and top=50
-ls *.png | xargs -I% magick % -crop 1920x1080+100+50 output/%
-```
-
-<br>
-
 ### Get file permission in number format.
 ```sh
 stat -s {TARGET_FILE or DIRECTORY} | cut -d " " -f3
@@ -103,6 +90,39 @@ lsof -i -P | grep "LISTEN" # add 'sudo' if needed
 
 ## close listening process
 # kill -9 {PID}
+```
+
+<br>
+
+## FFmpeg
+
+### Version 
+```sh
+ffmpeg -version
+# ffmpeg version 7.1 Copyright (c) 2000-2024 the FFmpeg developers
+# built with Apple clang version 16.0.0 (clang-1600.0.26.4)
+```
+
+### Output all keyframes as PNG from a movie.
+```sh
+ffmpeg -skip_frame nokey -i {INPUT_MOVIE_FILE} -vf framestep=1 -fps_mode passthrough [OUTPUT_DIRECTORY]%05d.png
+
+# outputs 00001.png, 00002.png, ...
+```
+
+<br>
+
+## ImageMagick
+
+### Resize an image by percent value.
+```sh
+magick {INPUT_FILE} -resize {PERCENT_VALUE}% {OUTPUT_FILE}
+```
+
+### Crop multiple files.
+```sh
+# Ex. width=1920, height=1080, left=100 and top=50
+ls *.png | xargs -I% magick % -crop 1920x1080+100+50 output/%
 ```
 
 <br>
