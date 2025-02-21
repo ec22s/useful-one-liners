@@ -30,6 +30,11 @@ find {TAGET_DIRECTORY} -type d | grep "/node_modules" | grep -v "/node_modules/"
 
 <br>
 
+### Get sequence with zero-paddding.
+```sh
+seq -w 1 100
+```
+
 ### Remove all .DS_Store files in the current and sub directories.
 ```sh
 # fast but unavailable for paths including a single quote (')
