@@ -139,6 +139,14 @@ ls *.png | xargs -I% magick % -crop 1920x1080+100+50 output/%
 
 ## Node.js
 
+### Display MD5 hash value.
+```sh
+node -v
+# v23.8.0
+
+node -e "const { createHash: hash } = require('node:crypto'); console.log(hash('md5').update('STRING_TO_BE_HASHED').digest('hex'));"
+```
+
 ### List all packages installed grobally with each version.
 - https://diwao.com/2019/09/npm-list-global.html
 ```sh
