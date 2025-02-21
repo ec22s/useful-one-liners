@@ -99,6 +99,15 @@ lsof -i -P | grep "LISTEN" # add 'sudo' if needed
 
 <br>
 
+## CSV
+
+### Get unique values in one column.
+```sh
+cut -d, -f {COLUMN_INDEX} {CSV_FILE_NAME} | awk '!a[$0]++{print}'
+```
+
+<br>
+
 ## FFmpeg
 
 ### Version 
