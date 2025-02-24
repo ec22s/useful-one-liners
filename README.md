@@ -149,6 +149,15 @@ ls *.png | xargs -I% magick % -crop 1920x1080+100+50 output/%
 [1, 2, 2, 3, 3, 3].reduce((acc, v) => { acc[v] = (acc[v] || 0) + 1; return acc }, {})
 ```
 
+### Display comma separated number.
+```javascript
+// Ref. https://stackoverflow.com/questions/50961083
+const ex1 = Number(12345678.999).toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+// "12,345,679"
+const ex2 = Number(12345678.999).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+// "12,345,679.00" 
+```
+
 <br>
 
 ## Node.js
