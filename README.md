@@ -30,6 +30,14 @@ find {TAGET_DIRECTORY} -type d | grep "/node_modules" | grep -v "/node_modules/"
 
 <br>
 
+### Create text file from encoded hex codes.
+```sh
+echo -n "879F0a879F879F879F879F" | xxd -p -r > test.txt
+# hexdump test.txt # check
+# Ex. '俱' as '0x879F' in encoding SHIFT_JIS_2004 (JIS X 0123)
+# 0a is a linebreak.
+```
+
 ### Get sequence with zero-paddding.
 ```sh
 seq -w 1 100
@@ -53,8 +61,6 @@ find . -name ".DS_Store" -exec rm {} \;
 # Ex. list files in order of date and rename to 2-digits with zero padding numbers.
 ls -tr * | awk '{ printf "mv \"%s\" %02d\n", $0, NR}' | sh
 ```
-
-<br>
 
 ### Get file permission in number format.
 ```sh
