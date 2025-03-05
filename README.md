@@ -107,6 +107,13 @@ lsof -i -P | grep "LISTEN" # add 'sudo' if needed
 cut -d, -f {COLUMN_INDEX} {CSV_FILE_NAME} | awk '!a[$0]++{print}'
 ```
 
+### Extract N columns from the beginning.
+```sh
+# https://nvnote.com/awk-delete-column/
+# Ex. from the second to last columns
+awk -F "," 'OFS="," {for(i=2;i<NF;i++){printf("%s%s",$i,OFS)}print $NF}' {INPUT_CSV} > {OUTPUT_CSV}
+```
+
 <br>
 
 ## FFmpeg
