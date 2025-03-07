@@ -106,6 +106,10 @@ lsof -i -P | grep "LISTEN" # add 'sudo' if needed
 ```sh
 cut -d, -f {COLUMN_INDEX} {CSV_FILE_NAME} | awk '!a[$0]++{print}'
 ```
+### Add random values to each row.
+```sh
+cat {INPUT_CSV} | xargs -I{} bash -c 'echo "{}",$RANDOM,$RANDOM' > {OUTPUT_CSV}
+```
 
 ### Extract N columns from the beginning.
 ```sh
