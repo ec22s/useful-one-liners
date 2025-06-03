@@ -161,7 +161,7 @@ magick {INPUT_FILE} -resize {PERCENT_VALUE}% {OUTPUT_FILE}
 ls *.png | xargs -I% magick % -crop 1920x1080+100+50 output/%
 ```
 
-### Convert svg to png width size specified.
+### Convert svg to png with size specified.
 ```sh
 # Ex. png_width=1024, svg_width=36
 magick -density `echo "scale=1; 96*1024/36 + 0.5" | bc | xargs printf "%.0f"` {INPUT.svg} {OUTPUT}.png
