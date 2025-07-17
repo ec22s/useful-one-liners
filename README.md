@@ -30,6 +30,19 @@ find {TAGET_DIRECTORY} -type d | grep "/node_modules" | grep -v "/node_modules/"
 
 <br>
 
+### Format number with thousand separator.
+
+```sh
+echo 5555 | LC_ALL="en_US" printf "%'.f\n" $(cat)
+```
+
+```sh
+# applying for remote file
+(curl --head https://demo-bucket.protomaps.com/v4.pmtiles 2>/dev/null) | grep length | awk -F ': ' '{print $2}' | LC_ALL="en_US" printf "%'.f\n" $(cat) 2>/dev/null
+```
+
+<br>
+
 ### Create text file from encoded hex codes.
 ```sh
 echo -n "879F0a879F879F879F879F" | xxd -p -r > test.txt
