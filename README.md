@@ -121,6 +121,13 @@ defaults write com.apple.screencapture disable-shadow -bool true
 killall SystemUIServer
 ```
 
+### Hide/Unhide file from Finder. (including BSD unix)
+- https://discussions.apple.com/thread/1627580
+- http://x68000.q-e-d.net/~68user/unix/pickup?chflags
+```sh
+chflags {hidden|nohidden} {FILE or FOLDER path}
+```
+
 <br>
 
 ## CSV
